@@ -1,0 +1,48 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.envelope-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh; /* Push the envelope down on the screen */
+  animation: fadeInEnvelope 2s ease forwards;
+  animation-delay: 2s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.envelope-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none; /* remove initial animation so transitions work */
+}
+
+@keyframes fadeInEnvelope {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.envelope-wrapper.zoom-out {
+  transform: scale(3) translateY(100px);
+  opacity: 0;
+  pointer-events: none;
+  animation: none; /* ensure fadeIn doesn't override */
+}

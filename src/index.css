@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-color: #fcfaf8;
+  --env-paper-inside: #dcd3c5;
+  --env-paper-sides: #f3efe6;
+  --env-paper-outer: #fdfcf9;
+  --gold: #cca633;
+  --gold-light: #ebd07d;
+  --paper: #fffffb;
+  --text-dark: #3a322b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  color: var(--text-dark);
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Beautiful custom scrollbar if needed */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+}

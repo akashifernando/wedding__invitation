@@ -1,5 +1,6 @@
 /* Main layout for the animated envelope */
 .envelope-scene {
+    --env-scale: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -21,10 +22,11 @@
     cursor: pointer;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     transform-style: preserve-3d;
+    transform: scale(var(--env-scale, 1));
 }
 
 .envelope:hover {
-    transform: translateY(-8px);
+    transform: scale(var(--env-scale, 1)) translateY(-8px);
 }
 
 .envelope-back {
@@ -290,7 +292,7 @@
 
 /* envelope open classes */
 .envelope.open {
-    transform: translateY(80px);
+    transform: scale(var(--env-scale, 1)) translateY(80px);
 }
 
 .envelope.open .top-flap {
@@ -319,43 +321,32 @@
 }
 
 .envelope-scene.zoom-out {
-    transform: scale(3) translateY(100px);
+    transform: scale(calc(3 * var(--env-scale, 1))) translateY(100px);
     opacity: 0;
     pointer-events: none;
 }
 
-/* Responsiveness for Envelope */
-@media (max-width: 500px) {
-    .envelope {
-        width: 320px;
-        height: 210px;
+/* Fluid responsiveness for Envelope via scale */
+@media (max-width: 1024px) {
+    .envelope-scene {
+        --env-scale: 0.9;
     }
+}
 
-    .top-flap {
-        border-left: 160px solid transparent;
-        border-right: 160px solid transparent;
-        border-top: 130px solid var(--env-paper-outer);
+@media (max-width: 800px) {
+    .envelope-scene {
+        --env-scale: 0.8;
     }
+}
 
-    .left-flap {
-        border-top: 105px solid transparent;
-        border-bottom: 105px solid transparent;
-        border-left: 160px solid var(--env-paper-sides);
+@media (max-width: 600px) {
+    .envelope-scene {
+        --env-scale: 0.7;
     }
+}
 
-    .right-flap {
-        border-top: 105px solid transparent;
-        border-bottom: 105px solid transparent;
-        border-right: 160px solid var(--env-paper-sides);
-    }
-
-    .bottom-flap {
-        border-left: 160px solid transparent;
-        border-right: 160px solid transparent;
-        border-bottom: 120px solid var(--env-paper-outer);
-    }
-
-    .wax-seal {
-        top: 130px;
+@media (max-width: 400px) {
+    .envelope-scene {
+        --env-scale: 0.55;
     }
 }

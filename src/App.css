@@ -1,6 +1,6 @@
 .app-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -21,6 +21,23 @@
   animation-delay: 2s;
   opacity: 0;
   transform: translateY(20px);
+}
+
+/* Mobile-first layout: make envelope sit naturally and allow scrolling */
+@media (max-width: 768px) {
+  .app-container {
+    height: auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .envelope-wrapper {
+    position: relative;
+    height: auto;
+    margin-top: 10vh;
+    align-items: flex-start;
+  }
 }
 
 .envelope-wrapper.visible {

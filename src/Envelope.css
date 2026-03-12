@@ -229,6 +229,8 @@
     filter: drop-shadow(0 4px 6px rgba(139, 101, 8, 0.6));
     padding-top: 5px;
     /* Slight offset for visual center */
+    min-width: 80px; /* Ensure a decent touch target */
+    min-height: 80px;
 }
 
 .wax-seal:hover {
@@ -329,24 +331,44 @@
 /* Fluid responsiveness for Envelope via scale */
 @media (max-width: 1024px) {
     .envelope-scene {
-        --env-scale: 0.9;
+        --env-scale: 0.85;
     }
 }
 
 @media (max-width: 800px) {
     .envelope-scene {
-        --env-scale: 0.8;
+        --env-scale: 0.75;
     }
 }
 
 @media (max-width: 600px) {
     .envelope-scene {
-        --env-scale: 0.7;
+        --env-scale: 0.65;
+        perspective: 1000px;
+    }
+    
+    .envelope.open {
+        transform: scale(var(--env-scale, 1)) translateY(60px);
+    }
+    
+    .envelope.open .letter {
+        transform: translateY(-260px);
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .envelope-scene {
-        --env-scale: 0.55;
+        --env-scale: 0.5;
+        padding-top: 10vh;
+    }
+    
+    .envelope.open {
+        transform: scale(var(--env-scale, 1)) translateY(40px);
+    }
+}
+
+@media (max-width: 380px) {
+    .envelope-scene {
+        --env-scale: 0.42;
     }
 }

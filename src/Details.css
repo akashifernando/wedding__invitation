@@ -33,33 +33,39 @@
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 3vh 0 5vh 0;
+        padding: 5vh 0;
         align-items: flex-start;
     }
 
     .glass-card {
-        width: 94%;
+        width: 92%;
         max-width: 480px;
-        padding: 28px 18px;
+        padding: clamp(20px, 5vw, 40px) clamp(16px, 4vw, 30px);
         margin: 0 auto;
     }
 
     .names-large {
-        font-size: 42px;
+        font-size: clamp(38px, 12vw, 48px);
     }
 
     .countdown-container {
-        gap: 10px;
+        gap: 8px;
+        margin: 20px 0 35px 0;
     }
 
     .time-box {
-        width: 60px;
-        height: 68px;
+        width: clamp(55px, 18vw, 65px);
+        height: clamp(60px, 20vw, 70px);
     }
 
     .event-item {
-        width: 90%;
-        padding: 14px 18px;
+        width: 95%;
+        padding: 12px 18px;
+    }
+    
+    .engagement-photo-container {
+        width: clamp(160px, 50vw, 220px);
+        height: clamp(160px, 50vw, 220px);
     }
 }
 
@@ -198,6 +204,7 @@
     background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     position: relative;
+    max-width: 80vw;
 }
 
 .engagement-photo {
@@ -342,15 +349,38 @@
 
 @media (max-width: 500px) {
     .glass-card {
-        padding: 30px 20px;
+        padding: clamp(25px, 6vw, 35px) clamp(15px, 4vw, 20px);
     }
 
     .names-large {
-        font-size: 48px;
+        font-size: clamp(34px, 10vw, 44px);
     }
 
     .events-grid {
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
+    }
+    
+    .event-item h3 {
+        font-size: 16px;
+    }
+    
+    .event-item p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .names-large {
+        font-size: 32px;
+    }
+    
+    .time-box {
+        width: 52px;
+        height: 60px;
+    }
+    
+    .time-number {
+        font-size: 16px;
     }
 }

@@ -37,7 +37,7 @@ function App() {
         backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, rgba(244,238,230,0.85) 100%), url(${currentBg.url})`,
         backgroundSize: 'cover',
         backgroundPosition: currentBg.position, /* Dynamic background position */
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: 'scroll',
         backgroundRepeat: 'no-repeat',
         transition: 'background-position 1.2s ease, background-image 1.2s ease'
       }}

@@ -34,6 +34,7 @@ body {
   background-color: var(--bg-color);
   font-family: 'Montserrat', sans-serif;
   color: var(--text-dark);
+  overflow-x: hidden;
 }
 
 #root {

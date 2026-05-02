@@ -23,11 +23,9 @@ function App() {
     setShowDetails(false);
     setCurrentBg({ url: bgImageClosing, position: 'right' });
 
-    // Wait for the details screen to fade out and the envelope to float back down before closing the flaps
-    setTimeout(() => {
-      setResetEnvelope(true);
-      setTimeout(() => setResetEnvelope(false), 100); // trigger reset and turn off
-    }, 1200);
+    // Close envelope state immediately when details closes
+    setResetEnvelope(true);
+    setTimeout(() => setResetEnvelope(false), 80);
   };
 
   return (

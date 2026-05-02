@@ -17,6 +17,8 @@ export default function Details({ isActive, onClose }) {
     const [showContent, setShowContent] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [isBlessing, setIsBlessing] = useState(false);
+    const [hearts, setHearts] = useState([]);
 
     useEffect(() => {
         let interval;
@@ -30,8 +32,8 @@ export default function Details({ isActive, onClose }) {
                 setPhotoIndex((prev) => (prev + 1) % engagementPhotos.length);
             }, 5500);
 
-            // Countdown to April 4th, 2026, 9:00 AM 
-            const weddingDate = new Date("April 4, 2026 09:00:00").getTime();
+            // Countdown target (set to 30 days in the future for portfolio demo)
+            const weddingDate = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).getTime();
             
             countdownInterval = setInterval(() => {
                 const now = new Date().getTime();
@@ -141,13 +143,45 @@ export default function Details({ isActive, onClose }) {
                 <div className="rsvp-section">
                     <p>Please bless us with your presence</p>
                     <button
-                        className="gold-btn outline"
+                        className={`gold-btn outline ${isBlessing ? 'blessing-active' : ''}`}
                         onClick={() => {
-                            onClose();
+                            if (isBlessing) return; // Prevent multiple clicks
+                            setIsBlessing(true);
+                            
+                            
+                            // Generate floating hearts
+                            const newHearts = Array.from({ length: 12 }).map((_, i) => ({
+                                id: Date.now() + i,
+                                left: 10 + Math.random() * 80, // Random position across the button width
+                                delay: Math.random() * 0.4,
+                                size: 16 + Math.random() * 16 // Random size between 16px and 32px
+                            }));
+                            setHearts(newHearts);
+
+                            // Reset local blessing state for next open
+                            setTimeout(() => {
+                                onClose();
+                                setIsBlessing(false);
+                                setHearts([]);
+                            }, 1200);
                         }}
                     >
-                        Bless the Couple
+                        {isBlessing ? "Thank You! 🙏❤️✨" : "Bless the Couple"}
                     </button>
+                    
+                    {hearts.map(heart => (
+                        <div 
+                            key={heart.id} 
+                            className="floating-heart"
+                            style={{
+                                left: `${heart.left}%`,
+                                animationDelay: `${heart.delay}s`,
+                                fontSize: `${heart.size}px`
+                            }}
+                        >
+                            ❤️
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
